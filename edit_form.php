@@ -41,10 +41,17 @@
         <input id="price" type="text" name="price" size="10" maxlength="10" value="<?=$price?>" />
     </div><div>
       <label for="category">カテゴリ:</lable><br />
-        <input id="category" type="text" name="category" value="<?=$category?>" />
+        <select id="category" name="category" value="<?=$category?>" />
+          <option value="1">食費</option>
+          <option value="2">交通費</option>
+          <option value="3">娯楽</option>
+          <option value="4">習い事</option>
+          <option value="5">etc...</option>
+        </select>
     </div><div>
       <label for="method">収支:</lable><br />
-        <input id="method" type="text" name="method" value="<?=$method?>" />
+        <input id="method" value="1" type="radio" name="method" checked value="<?=$method?>" />支出
+        <input id="method" value="2" type="radio" name="method" value="<?=$method?>" />収入
     </div><div>
       <label for="comment">備考:</lable><br />
         <input id="comment" type="text" name="comment" value="<?=$comment?>" />
