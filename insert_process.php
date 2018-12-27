@@ -1,6 +1,9 @@
 <?php
 require_once 'DbManager.php';
 
+//POSTデータの整形
+$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['manth'], $_POST['day'], $_POST['year']));
+
 try {
   //DB接続を確率
   $db = getDb();
@@ -8,7 +11,7 @@ try {
   //INSERT命令の準備
   $stt = $db->prepare('INSERT INTO price(date, price) VALUES(:date, :price)');
   //INSERT命令にポストデータの内容をセット
-  $stt -> bindValue(':date', $_POST['date']);
+  $stt -> bindValue(':date', $shape_date);
   $stt -> bindValue(':price', $_POST['price']);
   //INSERT命令にポストデータの内容をセット
   $stt->execute();

@@ -84,7 +84,7 @@ require_once 'DbManager.php';  //getDb関数の有効か
             <a href = "http://localhost/money_manager/practice/edit_form.php?id=<?= $row['price_id'] ?>">編集</a>
             <a href = "http://localhost/money_manager/practice/delete_process.php?id=<?= $row['price_id'] ?>" onclick = "return confirm('本当に削除してもよろしいですか？')">削除</a>
           </td>
-          </tr>
+        </tr>
           <?php
           }
         } catch(PDOException $e) {

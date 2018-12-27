@@ -35,7 +35,41 @@
   <form method="POST" action="edit_process.php">
     <div>
       <label for="date">登録日時:</lable><br />
-        <input id="date" type="text" name="date" value="<?=$date?>" />
+        <!--チェックボックスを５つ-->
+        <select name="year">
+        <?php optionLoop('1950', date('Y'), '2018');?>
+        </select>
+        年
+        <select name="manth">
+        <?php optionLoop('1', '12', '12');?>
+        </select>
+        月
+        <select name="day">
+        <?php optionLoop('1', '31', '12');?>
+        </select>
+        日
+        <select name="hour">
+        <?php optionLoop('1', '24', '12');?>
+        </select>
+        時
+        <select name="minute">
+        <?php optionLoop('1', '60', '00');?>
+        </select>
+        分
+        <?php
+        //セレクトオプションのループ設定
+        function optionLoop($start, $end, $value = null){
+
+          for($i = $start; $i <= $end; $i++){
+            if(isset($value) &&  $value == $i){
+              echo "<option value=\"{$i}\" selected=\"selected\">{$i}</option>";
+            }else{
+              echo "<option value=\"{$i}\">{$i}</option>";
+            }
+          }
+        }
+        ?>
+        <!--セレクトボックスここまで-->
     </div><div>
       <label for="price">金額:</lable><br />
         <input id="price" type="text" name="price" size="10" maxlength="10" value="<?=$price?>" />
