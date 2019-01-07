@@ -2,7 +2,7 @@
 require_once 'DbManager.php';
 
 //POSTデータの整形
-$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['manth'], $_POST['day'], $_POST['year']));
+$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['month'], $_POST['day'], $_POST['year']));
 
 try {
   //DB接続を確率
@@ -32,7 +32,7 @@ try {
   $sttt->execute();
 
   //処理後は一覧画面に繊維
-  header('Location: http://' .$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/result.php');
+  header('Location:result.php');
 } catch(PDOException $e) {
   print "エラーメッセージ:{$e->getMessage()}";
 }

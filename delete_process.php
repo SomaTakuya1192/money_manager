@@ -1,7 +1,6 @@
 <?php
 require_once 'DbManager.php';
 $get_price_id = $_GET['id'];
-var_dump($_GET);
 
 try {
 

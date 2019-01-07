@@ -2,7 +2,7 @@
 require_once 'DbManager.php';
 
 //POSTデータの整形
-$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['manth'], $_POST['day'], $_POST['year']));
+$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['month'], $_POST['day'], $_POST['year']));
 
 
 try {

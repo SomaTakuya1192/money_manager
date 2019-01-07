@@ -47,7 +47,6 @@ require_once 'DbManager.php';  //getDb関数の有効か
       //結果セットの内容を順に出力
       while($row = $stt->fetch(PDO::FETCH_ASSOC)) {
       ?>
-      <form method = "GET" action = "edit_forme.php">
         <tr>
           <td><?= $row['price_id'] ?></td>
           <td><?= $row['date'] ?></td>
@@ -81,8 +80,8 @@ require_once 'DbManager.php';  //getDb関数の有効か
           <td><?= $row['comment'] ?></td>
           <!--編集削除ボタンリンク先を追加-->
           <td>
-            <a href = "http://localhost/money_manager/practice/edit_form.php?id=<?= $row['price_id'] ?>">編集</a>
-            <a href = "http://localhost/money_manager/practice/delete_process.php?id=<?= $row['price_id'] ?>" onclick = "return confirm('本当に削除してもよろしいですか？')">削除</a>
+            <a href="edit_form.php?id=<?= $row['price_id'] ?>">編集</a>
+            <a href="delete_process.php?id=<?= $row['price_id'] ?>" onclick = "return confirm('本当に削除してもよろしいですか？')">削除</a>
           </td>
         </tr>
           <?php
@@ -92,7 +91,8 @@ require_once 'DbManager.php';  //getDb関数の有効か
           }
           ?>
           </table>
-</body>
+
 <!--新規追加画面-->
   <a href = "insert_form.php">新規登録</a>
+  </body>
 </html>
