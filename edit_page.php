@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
 //セレクトオプションのループ設定
 function display_date_option_loop($start, $end, $value = null){
 
@@ -12,11 +13,11 @@ function display_date_option_loop($start, $end, $value = null){
 }
 
 //DB接続
-require_once 'DbManager.php';
+require_once 'db_connect.php';
 $get_price_id = $_GET['id'];
 
 try {
-    $db = getDb();
+    $db = get_db();
 
         //price_idの値をSQL文にあてはめる
         $stt = $db->prepare("SELECT date,price,category,method,comment from price INNER JOIN price_meta ON price.ID = price_meta.price_id WHERE price_id = $get_price_id ORDER BY date DESC");
@@ -40,15 +41,8 @@ try {
 list($year, $month, $day, $hour, $minute, $second) = preg_split('/[-: ]/', $date);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>編集</title>
-</head>
-<body>
   <h1>編集画面</h1>
-  <form method="POST" action="edit_process.php">
+  <form method="POST" action="http://localhost/money_manager/practice/functions/edit_process.php">
     <div>
       <div><label for="date">登録日時:</lable></div>
         <!--チェックボックスを５つ-->
@@ -102,5 +96,4 @@ list($year, $month, $day, $hour, $minute, $second) = preg_split('/[-: ]/', $date
       <input type="submit" value="更新">
     </div>
   </form>
-</body>
-</html>
+<?php require_once 'footer.php'; ?>

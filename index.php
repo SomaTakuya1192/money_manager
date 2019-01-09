@@ -1,16 +1,11 @@
 <?php
-require_once 'DbManager.php';  //getDb関数の有効か
+require_once 'db_connect.php';//getDb関数の有効か
+require_once 'header.php';//ヘッダーの呼び出し
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset = "UTF-8" />
-  <title>結果セット</title>
-</head>
-<body>
+
 <!--検索フォーム-->
   <h1>収支検索</h1>
-  <form method = "GET" action = "result.php">
+  <form method = "GET" action = "index.php">
       <label for = "category">カテゴリ:</lable>
         <select id= "category" name = "category">
           <option value = "">絞り込みをしない</option>
@@ -32,7 +27,7 @@ require_once 'DbManager.php';  //getDb関数の有効か
   <?php
     try {
       //データーベースへの接続を確率
-      $db = getDb();
+      $db = get_db();
       $sql = 'SELECT * FROM price
         INNER JOIN price_meta
         ON price.ID = price_meta.price_id';
@@ -80,8 +75,8 @@ require_once 'DbManager.php';  //getDb関数の有効か
           <td><?= $row['comment'] ?></td>
           <!--編集削除ボタンリンク先を追加-->
           <td>
-            <a href="edit_form.php?id=<?= $row['price_id'] ?>">編集</a>
-            <a href="delete_process.php?id=<?= $row['price_id'] ?>" onclick = "return confirm('本当に削除してもよろしいですか？')">削除</a>
+            <a href="edit_page.php?id=<?= $row['price_id'] ?>">編集</a>
+            <a href="http://localhost/money_manager/practice/functions/delete_process.php?id=<?= $row['price_id'] ?>" onclick = "return confirm('本当に削除してもよろしいですか？')">削除</a>
           </td>
         </tr>
           <?php
@@ -93,6 +88,5 @@ require_once 'DbManager.php';  //getDb関数の有効か
           </table>
 
 <!--新規追加画面-->
-  <a href = "insert_form.php">新規登録</a>
-  </body>
-</html>
+  <a href = "insert_page.php">新規登録</a>
+<?php require_once 'footer.php'; ?>

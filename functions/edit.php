@@ -1,14 +1,12 @@
 <?php
-require_once 'DbManager.php';
+require_once '../db_connect.php';
 
-//POSTデータの整形
-$shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['month'], $_POST['day'], $_POST['year']));
-
-
-try {
+function update(){
+  //POSTデータの整形
+  $shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['month'], $_POST['day'], $_POST['year']));
 
   //DB接続を確率
-  $db = getDb();
+  $db = get_db();
 
   //INSERT命令の準備
   $stt = $db->prepare('UPDATE price SET date = :date, price = :price WHERE ID = :ID');
@@ -33,9 +31,4 @@ try {
   $sttt -> bindValue(':comment', $_POST['comment']);
   //INSERT命令を実行
   $sttt -> execute();
-
-  //処理後は一覧画面に繊維
-  header('Location: http://' .$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/result.php');
-} catch(PDOException $e) {
-  print "エラーメッセージ:{$e->getMessage()}";
 }

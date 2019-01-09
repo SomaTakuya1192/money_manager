@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('Asia/Tokyo');
 //セレクトオプションのループ設定
 function display_date_option_loop($start, $end, $value = null){
 
@@ -11,18 +10,11 @@ function display_date_option_loop($start, $end, $value = null){
     }
   }
 }
+require_once 'header.php';//ヘッダー呼び出し
 ?>
 
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8">
-      <title>収支登録</title>
-  </head>
-
-  <body>
     <h1>新規追加画面</h1>
-    <form method="POST" action="insert_process.php">
+    <form method="POST" action="http://localhost/money_manager/practice/functions/insert_process.php">
       <div>
         <div><label for="date">登録日時:</lable></div>
           <!--チェックボックスを５つ-->
@@ -76,5 +68,4 @@ function display_date_option_loop($start, $end, $value = null){
         <input type="submit" value="登録">
       </div>
     </form>
-  </body>
-</html>
+<?php require_once 'footer.php'; ?>

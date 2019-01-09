@@ -2,13 +2,13 @@
 
 トップページはindex.PHPで命名
 
-insert_formはinsert_pageに変更
-insert_prosessをinsert.phpに変更
+insert_formはinsert_pageに名前を変更
+insert_prosessをinsert.phpに名前を変更
 
 editも同様
 deleteも同様
 
-prosessは流れだけを各ファイル
+prosessは流れだけを書くファイル
 edit.phpは機能をだけを書くページ
 
 ファイル名を統一する、phpはスネークで書く事が多い。
@@ -16,14 +16,12 @@ DBはdb.phpまたはdb_conect.php
 
 浅い階層にはページと機能のファイルを作る
 
-phpのみの場合は終了タグはいらない
-
 設定項目はconfig.phpに入れて各自呼び出す。
 
 
 DB接続できなかったときエラーを書く
 
-　わからない処理はコメントを残す。
+　わかりにくい処理はコメントを残す。
 
 dsnはなんの略？
 
@@ -85,6 +83,3 @@ try_catchに入る前にバリテーションの処理を入れる。
 HTMLとPHPがこんざいするとインデントがずれるから分けよう。
 機能と過程と表示は分けた方がいいよね。
 小さい単位で機能をまとめた方がいいよね。
-
-
-ギットハブにイッシュでタスク化をする。
