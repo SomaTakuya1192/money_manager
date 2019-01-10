@@ -1,15 +1,6 @@
 <?php
+require_once 'functions/edit.php';
 //セレクトオプションのループ設定
-function display_date_option_loop($start, $end, $value = null){
-
-  for($i = $start; $i <= $end; $i++){
-    if(isset($value) &&  $value == $i){
-      echo "<option value=\"{$i}\" selected=\"selected\">{$i}</option>";
-    }else{
-      echo "<option value=\"{$i}\">{$i}</option>";
-    }
-  }
-}
 require_once 'header.php';//ヘッダー呼び出し
 ?>
 

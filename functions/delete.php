@@ -1,7 +1,5 @@
 <?php
-
 function delete(){
-  require_once '../db_connect.php';
   $get_price_id = $_GET['id'];
   //DB接続を確率
   $db = get_db();

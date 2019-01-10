@@ -1,6 +1,4 @@
 <?php
-require_once '../db_connect.php';
-
 function insert(){
   //POSTデータの整形
   $shape_date = date('Y-m-d H:i:s', mktime($_POST['hour'], $_POST['minute'], 0, $_POST['month'], $_POST['day'], $_POST['year']));
@@ -30,16 +28,4 @@ function insert(){
     $sttt -> bindValue(':comment', $_POST['comment']);
     //INSERT命令を実行
     $sttt->execute();
-}
-
-//セレクトオプションのループ設定
-function display_date_option_loop($start, $end, $value = null){
-
-  for($i = $start; $i <= $end; $i++){
-    if(isset($value) &&  $value == $i){
-      echo "<option value=\"{$i}\" selected=\"selected\">{$i}</option>";
-    }else{
-      echo "<option value=\"{$i}\">{$i}</option>";
-    }
-  }
 }

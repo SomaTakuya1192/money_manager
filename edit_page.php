@@ -1,44 +1,30 @@
 <?php
-require_once 'header.php';
-//セレクトオプションのループ設定
-function display_date_option_loop($start, $end, $value = null){
-
-  for($i = $start; $i <= $end; $i++){
-    if(isset($value) &&  $value == $i){
-      echo "<option value=\"{$i}\" selected=\"selected\">{$i}</option>";
-    }else{
-      echo "<option value=\"{$i}\">{$i}</option>";
-    }
-  }
-}
-
-//DB接続
 require_once 'db_connect.php';
-$get_price_id = $_GET['id'];
-
-try {
-    $db = get_db();
-
-        //price_idの値をSQL文にあてはめる
-        $stt = $db->prepare("SELECT date,price,category,method,comment from price INNER JOIN price_meta ON price.ID = price_meta.price_id WHERE price_id = $get_price_id ORDER BY date DESC");
-
-        //SELECT命令を実行
-        $stt->execute();
-
-        //結果セットの内容を順に出力
-        while($row = $stt->fetch(PDO::FETCH_ASSOC)){
-            $date = $row['date'];
-            $price = $row['price'];
-            $category = $row['category'];
-            $method = $row['method'];
-            $comment = $row['comment'];
-        }
-}catch(PDOException $e) {
-    $e->getMessage();
-}
-
-//以下日付を変数に分解
-list($year, $month, $day, $hour, $minute, $second) = preg_split('/[-: ]/', $date);
+require_once 'functions/edit.php';
+//ここをどうにかしたい
+  //DB接続
+  $get_price_id = $_GET['id'];
+  try {
+      $db = get_db();
+          //price_idの値をSQL文にあてはめる
+          $stt = $db->prepare("SELECT date,price,category,method,comment from price INNER JOIN price_meta ON price.ID = price_meta.price_id WHERE price_id = $get_price_id ORDER BY date DESC");
+          //SELECT命令を実行
+          $stt->execute();
+          //結果セットの内容を順に出力
+          while($row = $stt->fetch(PDO::FETCH_ASSOC)){
+              $date = $row['date'];
+              $price = $row['price'];
+              $category = $row['category'];
+              $method = $row['method'];
+              $comment = $row['comment'];
+          }
+  }catch(PDOException $e) {
+      $e->getMessage();
+  }
+  //以下日付を変数に分解
+  list($year, $month, $day, $hour, $minute, $second) = preg_split('/[-: ]/', $date);
+//ここまで
+require_once 'header.php';
 ?>
 
   <h1>編集画面</h1>
